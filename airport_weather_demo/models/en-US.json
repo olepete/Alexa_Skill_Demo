@@ -1,41 +1,88 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "greeter",
-      "types": [
-
-      ],
-      "intents": [
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": [
-
-          ]
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "airport weather",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "hello",
+                        "say hello",
+                        "say hello world"
+                    ]
+                },
+                {
+                    "name": "GetAirportWeatherIntent",
+                    "slots": [
+                        {
+                            "name": "Airport",
+                            "type": "Airport"
+                        }
+                    ],
+                    "samples": [
+                        "get weather",
+                        "get airport weather",
+                        "airport weather",
+                        "weather "
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "Airport",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Atlanta"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": [
-
-          ]
+        "dialog": {
+            "intents": [
+                {
+                    "name": "GetAirportWeatherIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Airport",
+                            "type": "Airport",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1010178191580.804958723157"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": [
-
-          ]
-        },
-        {
-          "name": "HelloWorldIntent",
-          "slots": [
-
-          ],
-          "samples": [
-            "hello",
-            "say hello",
-            "say hello world"
-          ]
-        }
-      ]
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1010178191580.804958723157",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which airport?"
+                    }
+                ]
+            }
+        ]
     }
-  }
 }

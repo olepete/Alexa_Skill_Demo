@@ -2,6 +2,7 @@
 /* eslint-disable  no-console */
 
 const Alexa = require('ask-sdk-core');
+const rp = require('request-promise');
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -38,7 +39,7 @@ const HelpIntentHandler = {
 const GetWeatherIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'GetWeather';
+      && handlerInput.requestEnvelope.request.intent.name === 'GetAirportWeatherIntent';
   },
   async handle(handlerInput) {
 
@@ -81,7 +82,7 @@ const GetWeatherIntentHandler = {
     //a robust solution will take the slot value and 
     //lookup the airport code via a service to return 
     let resp = await getWeather(code);
-      speechText = airportName + ' is ' + resp.Tempature + ' celsius';
+    let speechText = airportName + ' is ' + resp.Temperature + ' celsius';
       
     return handlerInput.responseBuilder
       .speak(speechText)

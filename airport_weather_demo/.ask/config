@@ -1,7 +1,7 @@
 {
   "deploy_settings": {
     "default": {
-      "skill_id": "",
+      "skill_id": "[replace w/ your skill]",
       "was_cloned": false,
       "merge": {
         "manifest": {
@@ -13,7 +13,33 @@
             }
           }
         }
-      }
+      },
+      "resources": {
+        "manifest": {
+          "eTag": "ad76eee34d6ac046363ec7b0133057a6"
+        },
+        "interactionModel": {
+          "en-US": {
+            "eTag": "7eac4754ca2c4eaba3f60fb9c8016316"
+          }
+        },
+        "lambda": [
+          {
+            "arn": "[repalce with your function id]",
+            "functionName": "ask-custom-airport_weather_demo-default",
+            "awsRegion": "us-east-1",
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "revisionId": "cc521c45-a049-4796-a8e9-bf5e3d41c0e3"
+          },
+          {
+            "arn": "arn:aws:lambda:us-east-1:981450411867:function:ask-custom-airport_weather_demo-default",
+            "revisionId": "c042938c-d44d-4e60-affd-41589542689f"
+          }
+        ]
+      },
+      "in_skill_products": []
     }
   }
 }
